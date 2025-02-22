@@ -238,15 +238,13 @@ class ArenaGames {
 
 	async main() {
 		const dataFile = path.join(__dirname, 'data.txt');
-		const data = fs.readFileSync(dataFile, 'utf8')
-			.replace(/\r/g, '')
-			.split('\n')
-			.filter(Boolean);
-
-		//const buybooster = await this.askQuestion('Bạn có muốn mua booster không? (y/n): ');
-		//const buyboosterDecision = buybooster.toLowerCase() === 'y';
 
 		while (true) {
+			const data = fs.readFileSync(dataFile, 'utf8')
+				.replace(/\r/g, '')
+				.split('\n')
+				.filter(Boolean);
+
 			const endAtList = [];
 
 			for (let no = 0; no < data.length; no++) {
