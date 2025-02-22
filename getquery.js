@@ -42,7 +42,7 @@ async function main() {
         // Thêm thời gian chờ trước khi lặp lại chương trình
         console.log("Chờ 60 giây trước khi lặp lại chương trình...");
 
-        let countdown = 60;
+        let countdown = 86400;
         const intervalId = setInterval(() => {
             if (countdown > 0) {
                 process.stdout.write(`\rThời gian chờ: ${countdown--} giây`);
