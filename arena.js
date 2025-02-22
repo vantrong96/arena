@@ -243,8 +243,8 @@ class ArenaGames {
 			.split('\n')
 			.filter(Boolean);
 
-		const buybooster = await this.askQuestion('Bạn có muốn mua booster không? (y/n): ');
-		const buyboosterDecision = buybooster.toLowerCase() === 'y';
+		//const buybooster = await this.askQuestion('Bạn có muốn mua booster không? (y/n): ');
+		//const buyboosterDecision = buybooster.toLowerCase() === 'y';
 
 		while (true) {
 			const endAtList = [];
@@ -264,9 +264,9 @@ class ArenaGames {
 					this.log(`${'Thời gian hoàn thành farm:'.green} ${readableTime.white}`);
 					endAtList.push(endAt);
 					
-					if (buyboosterDecision) {
-						await this.handleBooster(userId, tg, balance);
-					}
+					//if (buyboosterDecision) {
+					//	await this.handleBooster(userId, tg, balance);
+					//}
 				} catch (error) {
 					this.log(`${'Lỗi thông tin người dùng'.red}`);
 					console.log(error);
