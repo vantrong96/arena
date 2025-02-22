@@ -24,7 +24,7 @@ jobs:
 
     - name: Build 1
       run: |
-        npm install
+        npm install telegram
         node getquery.js
         grunt
 
