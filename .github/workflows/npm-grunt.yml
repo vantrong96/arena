@@ -22,8 +22,13 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
 
-    - name: Build
+    - name: Build 1
       run: |
         npm install
+        node getquery.js
+        grunt
+
+    - name: Build 2
+      run: |
         node arena.js
         grunt
