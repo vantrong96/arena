@@ -22,7 +22,7 @@ async function main() {
                 try {
                     const absolutePath = path.resolve(sessionFilePath);
                     const queryId = await getQueryId(Number(apiId), apiHash, absolutePath);
-                    console.log(`Query ID đã lấy được cho API ID ${apiId}`);
+                    console.log(`Query ID đã lấy được cho API ID ${apiId}: ${queryId}`);
                     results.push(encodeURI(`${queryId}`));
                 } catch (error) {
                     console.error(`Lỗi khi lấy query ID cho API ID ${apiId}: ${error.message}`);
@@ -38,23 +38,8 @@ async function main() {
         console.log(`Kết quả đã được ghi vào tệp: ${outputFile}`);
     } catch (error) {
         console.error(`Đã xảy ra lỗi: ${error.message}`);
-    } finally {
-        // Thêm thời gian chờ trước khi lặp lại chương trình
-        console.log("Chờ 60 giây trước khi lặp lại chương trình...");
-
-        let countdown = 86400;
-        const intervalId = setInterval(() => {
-            if (countdown > 0) {
-                process.stdout.write(`\rThời gian chờ: ${countdown--} giây`);
-            } else {
-                clearInterval(intervalId);
-                process.stdout.write('\n');
-                main(); // Lặp lại chương trình
-            }
-        }, 1000); // 1000 ms = 1 giây
     }
 }
-
 async function getQueryId(apiId, apiHash, sessionFilePath) {
     const sessionString = fs.readFileSync(sessionFilePath, 'utf-8');
     const client = new TelegramClient(new StringSession(sessionString), apiId, apiHash, {
@@ -82,7 +67,7 @@ async function getQueryId(apiId, apiHash, sessionFilePath) {
                 authUrl.split('tgWebAppData=')[1].split('&tgWebAppVersion')[0]
             )
         );
-        console.log(`[*] Đã lấy được query_id`);
+        console.log(`[*] Đã lấy được query_id: ${tgWebAppData}`);
         return tgWebAppData;
     } catch (error) {
         console.error("Error:", error.message);
